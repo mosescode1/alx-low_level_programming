@@ -24,7 +24,7 @@ int main(void)
 	}
 	else if (ldo == 0)
 	{
-		printf("%d and is 0\n", ldo);
+		printf("%d and is 1\n", ldo);
 	}
 	else
 	{
