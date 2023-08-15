@@ -1,7 +1,8 @@
 #include "main.h"
 
-/*
- * main - Entry point
+/**
+ * main - Entry Point
+ *
  * Description - printing uisng putchar
  *
  * Return: Always 0 (Success)
