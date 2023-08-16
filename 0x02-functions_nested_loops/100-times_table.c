@@ -2,16 +2,11 @@
 
 /**
  * print_times_table - prints all natural number starting from 0
- *
- * @i: first loop value 
- * @j: second loop value 
  * @n:  inputed value to be checked
  */
 void print_times_table(int n)
 {
-	int i; 
-	int j;
-	int k;
+	int i, j, k;
 
 	if (n >= 0 &&  n <= 15)
 	{
@@ -48,8 +43,9 @@ void print_times_table(int n)
 					_putchar(((k / 10) % 10) + '0');
 					_putchar((k % 10) + '0');
 				}
-			}
-			_putchar('\n');
+				_putchar('\n');
+			}	
 		}
+
 	}
 }
