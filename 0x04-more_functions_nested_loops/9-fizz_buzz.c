@@ -29,6 +29,11 @@ int main(void)
 				printf("Buzz");
 				printf(" ");
 			}
+			else if (i == 1)
+			{
+				printf("%d", i);
+				printf(" ");
+			}
 			else
 			{
 				printf("%d", i);
