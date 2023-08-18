@@ -9,20 +9,20 @@ int main(void)
 {
 	unsigned long int n  = 612852475143;
 	int nf = 2;
-	
+
 	while (n > 1)
 	{
 		if (n % nf == 0)
 		{
-			n/= nf;
+			n /= nf;
 		}
 		else
 		{
 			nf++;
 		}
-		
+
 	}
-	printf("%u\n",nf);
+	printf("%u\n", nf);
 
 	return (0);
 
