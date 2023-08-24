@@ -2,13 +2,13 @@
 
 /**
 * *string_toupper - changing to upper case
-* @n: input value
+* @str: input value
 * Return: always 0
 */
 
-char *string_toupper(char *n)
+char *string_toupper(char *str)
 {
-	char *ptr = n;
+	char *ptr = str;
 
 	while (*ptr != '\0')
 	{
@@ -18,5 +18,5 @@ char *string_toupper(char *n)
 		}
 		ptr++;
 	}
-	return (ptr);
+	return (str);
 }
