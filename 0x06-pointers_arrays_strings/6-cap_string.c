@@ -9,25 +9,18 @@
 char *cap_string(char *str)
 {
 	int i = 0;
-	int is_new_word = 1;
 
-	while (str[i] != '\0')
+	while (str[i])
 	{
-		if (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' ||
-			str[i] == ',' || str[i] == ';' || str[i] == '.' ||
-			str[i] == '!' || str[i] == '?' || str[i] == '"' ||
-			str[i] == '(' || str[i] == ')' || str[i] == '{' || str[i] == '}')
+		while (!(str[i] >= 'a' && str[i] <= 'z'))
 		{
-			is_new_word = 1;
-		}
-		else if (is_new_word && str[i] >= 'a' && str[i] <= 'z')
-		{
-			str[i] -= ('a' - 'z');
-			is_new_word = 0;
-		}
-		else
-		{
-			is_new_word = 0;
+			if (str[i - 1] == ' ' || str[i - 1] == '\t' || str[i - 1] == '\n' ||
+			str[i - 1] == ',' || str[i - 1] == ';' || str[i - 1] == '.' ||
+			str[i - 1] == '!' || str[i - 1] == '?' || str[i - 1] == '"' ||
+			str[i - 1] == '(' || str[i - 1] == ')' || str[i - 1] == '{' ||
+			 str[i - 1] == '}' || index == 0)
+
+			str[i] -= 32;
 		}
 	}
 	return (str);
