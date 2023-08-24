@@ -18,5 +18,5 @@ char *string_toupper(char *n)
 		}
 		ptr++;
 	}
-	return (0);
+	return (ptr);
 }
