@@ -1,45 +1,78 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
+
 /**
-* argstostr - entry point
-* @ac: int input
-* @av: double pointer
-* Return: NULL
-*/
-
-char *argstostr(int ac, char **av)
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
+ *
+ * Return: number of words
+ */
+int count_word(char *s)
 {
-	int a, b, c = 0, f = 0;
-	char *str;
+	int flag, c, w;
 
-	if (ac == 0 || av == 0)
+	flag = 0;
+	w = 0;
+
+	for (c = 0; s[c] != '\0'; c++)
 	{
-		return (NULL);
-	}
-	for (a = 0; a < ac; a++)
-	{
-		for (b = 0; av[a][b]; b++)
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
 		{
-			f++;
+			flag = 1;
+			w++;
 		}
 	}
-	f += ac;
-	str = malloc(sizeof(char) * f + 1);
-	if (str == NULL)
-	{
-		return (NULL);
-	}
-	for (a = 0; a < ac; a++)
-	{
-		for (b = 0; av[a][b]; b++)
-		{
-			str[c] = av[a][b];
-			c++;
-		}
-		if (str[c] == '\0')
-		{
-			str[c++] = '\n';
-		}
-	}
-	return (str);
+
+	return (w);
 }
+/**
+ * **strtow - splits a string into words
+ * @str: string to split
+ *
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
+ */
+char **strtow(char *str)
+{
+	char **dptr, *ptr;
+	int a, b = 0, len = 0, words, c = 0, start, end;
+
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
+		return (NULL);
+
+	dptr = (char **) malloc(sizeof(char *) * (words + 1));
+	if (dptr == NULL)
+		return (NULL);
+
+	for (a = 0; a <= len; a++)
+	{
+		if (str[a] == ' ' || str[a] == '\0')
+		{
+			if (c)
+			{
+				end = a;
+				ptr = (char *) malloc(sizeof(char) * (c + 1));
+				if (ptr == NULL)
+					return (NULL);
+				while (start < end)
+					*ptr++ = str[start++];
+				*ptr = '\0';
+				dptr[b] = ptr - c;
+				b++;
+				c = 0;
+			}
+		}
+		else if (c++ == 0)
+			start = a;
+	}
+
+	dptr[b] = NULL;
+
+	return (dptr);
+}
+
