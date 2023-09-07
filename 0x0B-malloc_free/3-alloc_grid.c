@@ -1,40 +1,32 @@
+#include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
 /**
- * alloc_grid - Allocates a 2-dimensional array of integers.
- * @width: The width of the grid.
- * @height: The height of the grid.
- *
- * Return: On success, returns a pointer to the allocated grid.
- *         On failure or if width or height is 0 or negative, returns NULL.
+ * alloc_grid - lets try to generate a 2 spatial array of twisted integers.
+ * @width: The number of columns to input.
+ * @height: The number of rows to input.
+ * Return: returns a pointer to a 2 spatial array of twisted integers.
  */
 int **alloc_grid(int width, int height)
 {
-	int **grid;
-	int i, j;
+	int i, j, **matrix;
 
 	if (width <= 0 || height <= 0)
 		return (NULL);
-
-	grid = malloc(sizeof(int *) * height);
-
-	if (grid == NULL)
+	matrix = malloc(height * sizeof(int *));
+	if (matrix == NULL)
 		return (NULL);
-
 	for (i = 0; i < height; i++)
 	{
-		grid[i] = malloc(sizeof(int) * width);
-		if (grid[i] == NULL)
+		matrix[i] = malloc(width * sizeof(int));
+		if (matrix[i] == NULL)
 		{
-			for (j = 0; j < i; j++)
-				free(grid[j]);
-			free(grid);
+			for (j = i - 1; j >= 0; j--)
+				free(matrix[j]);
+			free(matrix);
 			return (NULL);
 		}
 		for (j = 0; j < width; j++)
-			grid[i][j] = 0;
+			matrix[i][j] = 0;
 	}
-
-	return (grid);
+	return (matrix);
 }
-

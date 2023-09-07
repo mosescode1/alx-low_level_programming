@@ -1,10 +1,8 @@
-#ifndef FILE_MAIN
-#define FILE_MAIN
 char *create_array(unsigned int size, char c);
-char **strtow(char *str);
-char *argstostr(int ac, char **av);
 char *_strdup(char *str);
 char *str_concat(char *s1, char *s2);
 int **alloc_grid(int width, int height);
+int _putchar(char c);
 void free_grid(int **grid, int height);
-#endif
+char *argstostr(int ac, char **av);
+char **strtow(char *str);
