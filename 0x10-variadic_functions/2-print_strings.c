@@ -25,11 +25,10 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		}
 		else
 		{
-			printf("%s", p);
+			printf("%s ", p);
 		}
-
-		if (separator && i < n - 1)
-			printf("%s", separator);
+		if (separator == NULL)
+			return;
 	}
 
 	printf("\n");
