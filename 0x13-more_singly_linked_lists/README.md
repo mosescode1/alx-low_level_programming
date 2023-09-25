@@ -30,7 +30,7 @@ typedef struct listint_s
     int n;
     struct listint_s *next;
 } listint_t;
-
+```
 Tasks
 0. Print list (mandatory)
 Write a function that prints all the elements of a listint_t list.
