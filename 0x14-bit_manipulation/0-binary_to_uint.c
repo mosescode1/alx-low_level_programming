@@ -6,29 +6,17 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	int len = strlen(b);
-	int d = 0, bse = 1;
-	int i;
+	int z;
+	unsigned int dec = 0;
 
-	if (b == NULL)
+	if (!b)
 		return (0);
 
-	for (i = len - 1; i >= 0; i--)
+	for (z = 0; b[z]; z++)
 	{
-		if (b[i] == '0' || b[i] == '1')
-		{
-			if (b[i] == '1')
-			{
-				d += bse;
-			}
-			bse *= 2;
-		}
-		else
-		{
-			d = 0;
-			return (d);
-		}
+		if (b[z] < '0' || b[z] > '1')
+			return (0);
+		deec = 2 * dec + (b[z] - '0');
 	}
-
-	return (d);
+	return (dec);
 }
