@@ -20,7 +20,7 @@ unsigned int binary_to_uint(const char *b)
 		{
 			if (b[i] == '1')
 				dec += base; /** dec = 1 + 4**/
-			base *= 2; /** 8**/ 
+			base *= 2; /** 8**/
 
 		}
 		else
