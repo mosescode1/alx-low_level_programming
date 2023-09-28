@@ -2,7 +2,7 @@
 
 /**
  * clear_bit - clear bit
- * @n: number 
+ * @n: number
  * @index:  index of number
  * Return: value
  */
