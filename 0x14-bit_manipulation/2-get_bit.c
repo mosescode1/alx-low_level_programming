@@ -4,6 +4,7 @@
  * get_bit - getting bit
  * @n: number of int
  * @index: index number
+ * Return: the value of get_v
  */
 
 int get_bit(unsigned long int n, unsigned int index)
