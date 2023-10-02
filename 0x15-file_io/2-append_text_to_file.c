@@ -14,12 +14,12 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	filepointer = fopen(filename, "a+");
 
-	if (filespointer == NULL || filename == NULL)
+	if (filepointer == NULL || filename == NULL)
 		return (-1);
 
 	if (text_content != NULL)
 	{
-		value = fputs(text_content, filepointer);
+		values = fputs(text_content, filepointer);
 		if (values < 0)
 			return (-1);
 	}
