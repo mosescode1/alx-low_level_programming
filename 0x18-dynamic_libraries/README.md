@@ -1,1 +1,1 @@
-this is the usage of dynamic libary 
+this is the usage of dynamic libary
