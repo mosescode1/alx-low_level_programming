@@ -1,67 +1,54 @@
 #include "search_algos.h"
 #include <math.h>
 
-
+size_t min(size_t i, size_t j);
 
 /**
- * min - checks for min value
- * @a: first value
- * @b: second value
- * Return: the lowest/min value
-*/
-size_t min(size_t a, size_t b)
+ * min - return minimum of two values
+ * @i: first value
+ * @j: second value
+ * Return: `a` if lower or equal to `b`
+ */
+
+size_t min(size_t i, size_t j)
 {
-	return ((a > b) ? b : a);
+	return (i <= j ? i : j);
 }
+
+
 /**
- * jump_search - search a data structure by jumping it index
- * @array: the array to be searched
- * @size: size of the array to the searched
- * @value: target value in the search
- * Return: Found when target value is present otherwise (-1)
-*/
-int jump_search(int *array, size_t size, int value);
+ * jump_search - searches for a value in a sorted array of integers
+ * @array: pointer to the first element of the array to search in
+ * @size: number of elements in array
+ * @value: value to search for
+ * Return: first index where value is located or -1 if
+ *	value is not present in array or if array is NULL
+ */
+
 int jump_search(int *array, size_t size, int value)
 {
-	size_t prev, step;
+	size_t prev, high, step;
 
-	prev = 0;
+	if (!array || size == 0)
+		return (-1);
+
 	step = sqrt(size);
 
-	if (array == NULL)
-		return (-1);
-	/**
-	 * Checks if the value is in any of the block
-	* in an array
-	*/
-	while (array[min(step, size) - 1] < value)
+	for (high = 0; high < size && array[high] < value;
+	     prev = high, high += step)
 	{
-		printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-		prev = step;
-		step += sqrt(size);
-		/*If the prev equal array size then the value isnt present*/
-		if (prev >= size)
-			return (-1);
-	}
-	/*If value is in an expected block a linear search is made*/
-	while (array[prev] < value)
-	{
-		printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-		prev++;
-		printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
-
-		/* value not found*/
-		if (prev == min(step, size))
-		{
-			return (-1);
-		}
+		printf("Value checked array[%lu] = [%d]\n",
+		       high, array[high]);
 	}
 
+	printf("Value found between indexes [%lu] and [%lu]\n", prev, high);
 
-	if (array[prev] == value)
+	for (; prev <= min(high, size - 1); prev++)
 	{
-		return (prev);
+		printf("Value checked array[%lu] = [%d]\n", prev, array[prev]);
+		if (array[prev] == value)
+			return (prev);
 	}
+
 	return (-1);
 }
-
