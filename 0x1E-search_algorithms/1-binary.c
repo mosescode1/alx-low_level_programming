@@ -26,9 +26,6 @@ int binary_search(int *array, size_t size, int value)
 	while (low <= high)
 	{
 		mid = low + (high - low) / 2;
-		/* if the value is at the mid point*/
-		if (value == array[mid])
-			return (mid);
 
 		printf("Searching in array: ");
 		for (i = low; i <= high; i++)
@@ -37,6 +34,10 @@ int binary_search(int *array, size_t size, int value)
 			else
 				printf("%d, ", array[i]);
 		printf("\n");
+
+		/* if the value is at the mid point*/
+		if (value == array[mid])
+			return (mid);
 
 		/* check which part  of the divided array should be used*/
 		if (array[mid] > value)
